@@ -97,6 +97,27 @@ class LinkedList {
                 temp = temp->next;
             }
         }
+        
+        void removeNthElement(int n) {
+            Node *temp = head;
+            int count = 1;
+            while(count < n) {
+                temp = temp->next;
+            }
+            Node *tail = temp->next;
+            temp->next = temp->next->next;
+            delete(tail);
+        }
+        
+        int LengthOfLL() {
+            int count =0;
+            Node *temp = head;
+            while(temp->next != nullptr) {
+                count++;
+                temp = temp->next;
+            } 
+            return count;
+        }
 };
 
 int main() {
@@ -118,7 +139,12 @@ int main() {
     obj->removeAtHead();
     obj->removeAtTail();
     obj->removeData(49);
+    //  obj->removeNthElement(4);
+    
     
     obj->printLinkedList();
+    
+    int length = obj->LengthOfLL();
+    cout<<"Length of LinkedList :"<<length;
     return 0;
 }
